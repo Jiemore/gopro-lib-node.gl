@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 #
-# Copyright 2016 GoPro Inc.
+# Copyright 2019 GoPro Inc.
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -21,24 +20,10 @@
 # under the License.
 #
 
-from setuptools import setup, find_packages
+import math
 
-setup(name='pynodegl-utils',
-      version='1.0',
-      packages=find_packages(),
-      install_requires=['pynodegl'],
-      entry_points={
-          'console_scripts': [
-              'ngl-viewer = pynodegl_utils.viewer:run',
-              'ngl-test = pynodegl_utils.tests:run',
-          ],
-      },
-      package_data={
-          '': [
-              'examples/data/*',
-              'examples/shaders/*.frag',
-              'examples/shaders/*.comp',
-              'examples/shaders/*.vert',
-          ],
-      }
-)
+
+def equilateral_triangle_coords(sz=1.0):
+    b = sz * math.sqrt(3) / 3.0
+    c = sz * .5
+    return (-b, -c, 0), (b, -c, 0), (0, sz * .5, 0)

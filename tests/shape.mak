@@ -1,7 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 #
-# Copyright 2016 GoPro Inc.
+# Copyright 2019 GoPro Inc.
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -21,24 +19,16 @@
 # under the License.
 #
 
-from setuptools import setup, find_packages
+SHAPE_TEST_NAMES =              \
+    triangle                    \
+    quad                        \
+    circle                      \
+    diamond_colormask           \
+    geometry                    \
+    geometry_normals            \
+    geometry_rtt                \
+    geometry_rtt_depth          \
+    geometry_rtt_samples        \
+    cropboard                   \
 
-setup(name='pynodegl-utils',
-      version='1.0',
-      packages=find_packages(),
-      install_requires=['pynodegl'],
-      entry_points={
-          'console_scripts': [
-              'ngl-viewer = pynodegl_utils.viewer:run',
-              'ngl-test = pynodegl_utils.tests:run',
-          ],
-      },
-      package_data={
-          '': [
-              'examples/data/*',
-              'examples/shaders/*.frag',
-              'examples/shaders/*.comp',
-              'examples/shaders/*.vert',
-          ],
-      }
-)
+$(eval $(call DECLARE_REF_TESTS,shape,$(SHAPE_TEST_NAMES)))
